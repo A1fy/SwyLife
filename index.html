@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SwyLife 是一款面向睡眠与心理健康的 Android 移动应用，提供助眠放松、睡眠训练、情绪记录与社区互动等功能。" />
+  <title>SwyLife — 助眠 · 冥想 · 好梦</title>
+  <style>
+    :root {
+      --bg-deep: #0d1b2a;
+      --bg-mid: #1a2c4a;
+      --accent: #1976d2;
+      --accent-light: #90caf9;
+      --text: #e8eef5;
+      --text-muted: #9aa8b8;
+      --card: rgba(255, 255, 255, 0.06);
+      --radius: 16px;
+      --max: 960px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(165deg, var(--bg-deep) 0%, var(--bg-mid) 55%, #1e3a5f 100%);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    a { color: var(--accent-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px 64px; }
+
+    header {
+      text-align: center;
+      padding: 56px 0 40px;
+    }
+    .logo {
+      width: 108px;
+      height: 108px;
+      margin: 0 auto 20px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 30% 30%, #2a4a7a, #1a3a6a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2.4rem;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+    }
+    .intro {
+      margin-top: 28px;
+      font-size: 1.05rem;
+      color: #c5d4e8;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section { margin-top: 48px; }
+    h2 {
+      font-size: 1.35rem;
+      margin-bottom: 20px;
+      padding-left: 12px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .feature {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+    }
+    .feature h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--accent-light);
+    }
+    .feature p { font-size: 0.92rem; color: var(--text-muted); }
+
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .shot {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      aspect-ratio: 9 / 19;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      overflow: hidden;
+    }
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: calc(var(--radius) - 4px);
+    }
+
+    .meta {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .meta dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 20px;
+      font-size: 0.95rem;
+    }
+    .meta dt { color: var(--text-muted); white-space: nowrap; }
+    .meta dd { color: var(--text); }
+
+    .download {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid rgba(25, 118, 210, 0.35);
+    }
+    .download p { color: var(--text-muted); margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    footer p + p { margin-top: 6px; }
+    .company-hint {
+      margin-top: 12px;
+      padding: 10px 16px;
+      background: rgba(255, 193, 7, 0.12);
+      border-radius: 8px;
+      color: #ffd54f;
+      font-size: 0.8rem;
+      display: none; /* 部署前在 README 中说明：替换公司名后可删除本提示区块 */
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo" aria-hidden="true">
+        <!-- 部署时可将 images/icon.png（108×108）放入同目录并取消下行注释 -->
+        <!-- <img src="images/icon.png" alt="SwyLife 应用图标" /> -->
+        🌙
+      </div>
+      <h1>SwyLife</h1>
+      <p class="tagline">助眠 · 冥想 · 好梦</p>
+      <p class="intro">
+        SwyLife 是一款面向睡眠与心理健康的 Android 移动应用，帮助用户改善睡眠质量、
+        进行放松训练与情绪管理，并提供睡眠日记、量表评估与社区交流等能力。
+      </p>
+    </header>
+
+    <section aria-labelledby="features-title">
+      <h2 id="features-title">主要功能</h2>
+      <div class="features">
+        <article class="feature">
+          <h3>助眠与放松训练</h3>
+          <p>提供放松音频、冥想与睡眠相关训练内容，支持后台播放，帮助入睡与减压。</p>
+        </article>
+        <article class="feature">
+          <h3>睡眠与情绪记录</h3>
+          <p>支持睡眠日记、情绪日记等记录方式，便于追踪睡眠与心理状态变化。</p>
+        </article>
+        <article class="feature">
+          <h3>CBTI 睡眠干预</h3>
+          <p>基于认知行为失眠干预（CBTI）理念，提供任务、用药与心情等配套管理功能。</p>
+        </article>
+        <article class="feature">
+          <h3>心理量表评估</h3>
+          <p>内置多种心理与睡眠相关量表，完成评估后可查看报告与趋势分析。</p>
+        </article>
+        <article class="feature">
+          <h3>社区与互动</h3>
+          <p>用户可在社区分享经验、参与讨论，获得同伴支持与正向激励。</p>
+        </article>
+        <article class="feature">
+          <h3>智能设备联动</h3>
+          <p>可绑定助眠相关智能硬件，在应用内完成设备控制与使用记录。</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="shots-title">
+      <h2 id="shots-title">应用界面</h2>
+      <div class="shots">
+        <div class="shot">
+          <img src="images/shot-login.png" alt="SwyLife 登录界面" />
+          <!-- 请将登录页截图保存为<br />images/shot-login.png -->
+        </div>
+        <div class="shot">
+          <img src="images/shot-home.png" alt="SwyLife 首页" />
+          <!-- 请将首页截图保存为<br />images/shot-home.png -->
+        </div>
+        <div class="shot">
+          <img src="images/shot-feature.png" alt="SwyLife 功能页" />
+          <!-- 请将功能页截图保存为<br />images/shot-feature.png -->
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="meta-title">
+      <h2 id="meta-title">应用信息</h2>
+      <div class="meta">
+        <dl>
+          <dt>应用名称</dt>
+          <dd>SwyLife</dd>
+          <dt>应用类型</dt>
+          <dd>Android 移动应用</dd>
+          <dt>Android 包名</dt>
+          <dd><code>com.swy2024.swyapp</code></dd>
+          <dt>适用人群</dt>
+          <dd>有睡眠改善、放松减压及心理健康管理需求的成年用户</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section aria-labelledby="download-title">
+      <h2 id="download-title">获取应用</h2>
+      <div class="download">
+        <p>SwyLife 目前处于开发阶段，通过企业内部分发与测试渠道提供安装包。</p>
+        <p>如需获取内测版本，请联系产品团队或您所在机构的对接人员。</p>
+      </div>
+    </section>
+
+    <footer>
+      <!-- 部署前请将下方「待填写公司全称」替换为微信开放平台企业认证主体名称 -->
+      <p><strong id="company-name">待填写公司全称</strong></p>
+      <p>Copyright © 2017–2026 <span id="company-name-copy">待填写公司全称</span> 保留所有权利</p>
+      <p id="icp-line">ICP备案号：待填写（如有请填写与主体一致的备案号）</p>
+      <p class="company-hint">
+        提示：部署前请在 index.html 页脚将「待填写公司全称」改为开放平台认证主体全称，并补充截图与图标。
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
